@@ -41,6 +41,14 @@ jobs:
       - name: Build image
         run: docker build -t ask-your-data:${{ github.sha }} .
 
+      - name: Scan image for vulnerablilities (Trivy)
+        run: |
+          docker run --rm \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          ghcr.io/aquasecurity/trivy:0.69.2 image \
+          --severity HIGH,CRITICAL --ignore-unfixed --exit-code 1 \
+          ask-your-data:${{ github.sha }}
+
       - name: Smoke test container
         run: |
           docker run -d --name app -p 8000:8000 ask-your-data:${{ github.sha }}
