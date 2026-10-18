@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "github_trust" {
     condition {
       test     = "StringEquals"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:mgalloways/ask-your-data:ref:refs/heads/main"]
+      values   = ["repo:mgalloways@68606527/ask-your-data@1409110662:ref:refs/heads/main"]
     }
   }
 }
