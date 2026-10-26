@@ -12,9 +12,11 @@ spec:
       labels:
         app: ask-your-data
     spec:
+      imagePullSecrets:
+        - name: ecr-pull
       containers:
         - name: app
-          image: ask-your-data:v0.2.0
+          image: 554479277082.dkr.ecr.us-east-1.amazonaws.com/ask-your-data:514fe2e56ada014c94607b0ce605199f1fd275c7
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
@@ -31,7 +33,3 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
-          image: ask-your-data:v0.2.0
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 8000
