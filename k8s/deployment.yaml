@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ask-your-data
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ask-your-data
+  template:
+    metadata:
+      labels:
+        app: ask-your-data
+    spec:
+      containers:
+        - name: app
+          image: ask-your-data:v0.2.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
