@@ -16,3 +16,13 @@ An LLM-powered analytics app, built as a DevOps portfolio project.
 
     docker build -t ask-your-data .
     docker run -p 8000:8000 ask-your-data
+
+## Security
+
+Every push and pull request runs:
+- Ruff (lint) and Bandit (static security scan)
+- Pytest
+- Trivy image scan, blocking HIGH and CRITICAL findings
+- A container smoke test
+
+Dependabot and GitHub secret scanning with push protection are enabled.
